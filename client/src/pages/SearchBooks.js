@@ -61,6 +61,7 @@ const SearchBooks = () => {
   const handleSaveBook = async (bookId) => {
     console.log("inisde handle save")
     // find the book in `searchedBooks` state by the matching id
+    console.log(bookId ," bookId");
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
     console.log(bookToSave, "book deatails")
 
@@ -72,9 +73,11 @@ const SearchBooks = () => {
     }
 
     try {
+      console.log("before variables 77")
       await saveBook({
         variables: { dataBook: { ...bookToSave } },
       });
+      console.log("inside save Book, 80")
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
